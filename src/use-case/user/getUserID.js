@@ -1,8 +1,8 @@
-const User = require("../../context/models/Users");
+const User = require("../../repositories/Users");
 
 module.exports = async (req, res) => {
 
-    const users = await User.findAll();
+    const users = await User.findByPk(req.params.id);
 
     return res.json(users);
 
