@@ -1,9 +1,6 @@
-import Joi, * as joi from "joi"
-import { request,response,next} from "express"
+const Joi = require("joi");
 
-
-
-export default function requestValidator(req, res, next) {
+function requestValidator(req, res, next) {
   const schema = Joi.object({
     firstName: Joi.string().min(2).max(50).required(),
     lastName: Joi.string().min(2).max(50).required(),
@@ -21,3 +18,5 @@ export default function requestValidator(req, res, next) {
 
   next();
 }
+
+module.exports = requestValidator;
