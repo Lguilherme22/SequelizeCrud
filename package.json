@@ -7,11 +7,17 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "dev": "tsc --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "migrate": "sequelize-cli db:migrate",
     "migrate:undo": "sequelize-cli db:migrate:undo",
     "migrate:undo:all": "sequelize-cli db:migrate:undo:all",
-    "migrate:generate": "sequelize-cli migration:generate"
+    "migrate:generate": "sequelize-cli migration:generate",
+    "seed": "sequelize-cli db:seed:all",
+    "seed:undo": "sequelize-cli db:seed:undo",
+    "seed:undo:all": "sequelize-cli db:seed:undo:all",
+    "seed:generate": "sequelize-cli seed:generate"
   },
   "keywords": [],
   "author": "",
@@ -25,8 +31,11 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
     "@types/node": "^26.1.0",
+    "jest": "^30.4.2",
     "sequelize-cli": "^6.6.5",
+    "ts-jest": "^29.4.11",
     "typescript": "^6.0.3"
   }
 }
