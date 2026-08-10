@@ -1,7 +1,8 @@
-import { Request, Response } from "express";
-import User from "../../repositories/Users";
+import { IUserRepository } from "../../domain/repositories/IUserRepository";
+import { UserData } from "../../domain/entities/User";
 
-export default async (_req: Request, res: Response) => {
-  const users = await User.findAll();
-  return res.json(users);
-};
+export default async function getAllUsers(
+  repository: IUserRepository,
+): Promise<UserData[]> {
+  return repository.findAll();
+}

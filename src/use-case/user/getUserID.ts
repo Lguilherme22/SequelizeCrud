@@ -1,8 +1,9 @@
-import { Request, Response } from "express";
-import User from "../../repositories/Users";
+import { IUserRepository } from "../../domain/repositories/IUserRepository";
+import { UserData } from "../../domain/entities/User";
 
-export default async (req: Request, res: Response) => {
-  const userId = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
-  const users = await User.findByPk(userId);
-  return res.json(users);
-};
+export default async function getUserById(
+  id: string,
+  repository: IUserRepository,
+): Promise<UserData | null> {
+  return repository.findById(id);
+}

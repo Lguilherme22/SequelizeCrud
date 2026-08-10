@@ -1,14 +1,10 @@
-import { Request, Response } from "express";
-import User from "../../repositories/Users";
+import { IUserRepository } from "../../domain/repositories/IUserRepository";
+import { UserData } from "../../domain/entities/User";
 
-export default async (req: Request, res: Response) => {
-  const userId = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
-  const user = await User.findByPk(userId);
-
-  if (!user) {
-    return res.status(404).json({ message: "User not found" });
-  }
-
-  await user.update(req.body);
-  return res.json(user);
-};
+export default async function updateUser(
+  id: string,
+  data: Partial<UserData>,
+  repository: IUserRepository,
+): Promise<UserData | null> {
+  return repository.update(id, data);
+}
