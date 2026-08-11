@@ -1,23 +1,7 @@
-import { DataTypes, Model, Optional } from "sequelize";
-import sequelize from "../db/database";
+import { DataTypes, Model } from "sequelize";
+import sequelize from "./database";
 
-interface UserAttributes {
-  id: number;
-  firstName: string;
-  lastName: string;
-  age: number;
-  email: string;
-}
-
-interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
-
-class UserModel extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
-  public id!: number;
-  public firstName!: string;
-  public lastName!: string;
-  public age!: number;
-  public email!: string;
-}
+class UserModel extends Model {}
 
 UserModel.init(
   {

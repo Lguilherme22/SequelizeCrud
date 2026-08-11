@@ -1,6 +1,6 @@
 import express from "express";
-import sequelize from "./infrastructure/db/database";
-import routes from "./context/routes";
+import sequelize from "./db/database";
+import routes from "./context";
 
 const app = express();
 

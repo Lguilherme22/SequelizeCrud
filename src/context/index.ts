@@ -1,12 +1,13 @@
 import express from "express";
-import UserRepository from "../../repositories/UserRepository";
+import UserRepository from "../repositories/UserRepository";
+import requestValidator from "./validators/requestValidator";
 import {
   createUserController,
   getAllUsersController,
   getUserByIdController,
   updateUserController,
-  deleteUserController,} from "../controllers/userController";
-import requestValidator from "../validators/requestValidator";
+  deleteUserController,
+} from "./controllers/userController";
 
 const router = express.Router();
 const userRepository = new UserRepository();
