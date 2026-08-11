@@ -128,6 +128,18 @@ describe("User use-cases", () => {
   });
 
   it("deleteUser should return 404 when user is not found", async () => {
+    const req = { params: { id: ["77"] } } as any;
+    const res = createRes();
+
+    (User.findByPk as jest.Mock).mockResolvedValue(null);
+
+    await deleteUser(req, res as any);
+
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ message: "User not found" });
+  });
+
+  it("deleteUser should return 404 when user is not found", async () => {
     const req = { params: { id: "77" } } as any;
     const res = createRes();
 
