@@ -1,5 +1,5 @@
 const path = require('path');
 
 module.exports = {
-  'migrations-path': path.resolve('migrations'),
+  'migrations-path': path.resolve('src/db/migrations'),
 };

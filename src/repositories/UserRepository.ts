@@ -1,4 +1,4 @@
-import UserModel from "../db/UserModel";
+import UserModel from "../db/models/UserModel";
 
 export default class UserRepository {
   async create(user) {
