@@ -1,21 +1,18 @@
 import express from "express";
-import requestValidator from "./validators/requestValidator";
-import {
-	createUserController,
-	getAllUsersController,
-	getUserByIdController,
-	updateUserController,
-	deleteUserController,
-} from "./controllers";
+import createUserRoute from "./createUser";
+import getAllUsersRoute from "./getAllUsers";
+import getUserByIdRoute from "./getUserById";
+import updateUserRoute from "./updateUser";
+import deleteUserRoute from "./deleteUser";
 
 export default function createUserRoutes(repository) {
-	const router = express.Router();
+  const router = express.Router();
 
-	router.get("/", getAllUsersController(repository));
-	router.get("/:id", getUserByIdController(repository));
-	router.post("/", requestValidator, createUserController(repository));
-	router.put("/:id", requestValidator, updateUserController(repository));
-	router.delete("/:id", deleteUserController(repository));
+  router.use("/", getAllUsersRoute(repository));
+  router.use("/", getUserByIdRoute(repository));
+  router.use("/", createUserRoute(repository));
+  router.use("/", updateUserRoute(repository));
+  router.use("/", deleteUserRoute(repository));
 
-	return router;
+  return router;
 }
