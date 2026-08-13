@@ -1,12 +1,12 @@
 import express from "express";
-import sequelize from "./db/models/database";
-import routes from "./context";
+import createContextRouter from "./context";
+import UserRepository from "./repositories/UserRepository";
 
 const app = express();
+const userRepository = new UserRepository();
+const routes = createContextRouter({ userRepository });
 
 app.use(express.json());
 app.use(routes);
-
-sequelize.sync();
 
 export default app;
