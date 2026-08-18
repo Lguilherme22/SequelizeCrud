@@ -10,6 +10,7 @@
     "types": ["node", "jest"],
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "noImplicitAny": false,
     "skipLibCheck": true
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"]

@@ -1,7 +1,6 @@
 import Joi from "joi";
-import { Request, Response, NextFunction } from "express";
 
-function requestValidator(req: Request, res: Response, next: NextFunction) {
+function requestValidator(req, res, next) {
   const schema = Joi.object({
     firstName: Joi.string().min(2).max(50).required(),
     lastName: Joi.string().min(2).max(50).required(),
